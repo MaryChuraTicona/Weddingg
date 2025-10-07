@@ -1,0 +1,83 @@
+/* ==== Código de Vestimenta ==== */
+.dress-code-section {
+  text-align: center;
+  padding: 60px 20px;
+  background: #fdf8f5;
+ font-family: "Licorice", cursive;
+}
+
+.dress-code-section .section-title {
+  font-family: "Licorice", cursive;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #4a2f4f;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+}
+
+.dress-code-columns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+.dress-code-card.horizontal {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 700px;
+}
+
+/* Caballeros: imagen a la derecha */
+.dress-code-card.horizontal.reverse {
+  flex-direction: row-reverse;
+}
+
+.dress-code-card img {
+  width: 150px;
+  height: auto;
+  border-radius: 0;
+  box-shadow: none;
+  transition: transform 0.4s ease;
+}
+
+.dress-code-card img:hover {
+  transform: scale(1.05);
+}
+
+.dress-code-card .text-content {
+  text-align: left;
+}
+
+.dress-code-card .text-content h3 {
+   font-family: 'Uncial Antiqua', cursive;
+  font-size: 1.6rem;
+  color: #4a2f4f;
+  margin-bottom: 10px;
+}
+
+.dress-code-card .text-content p {
+   font-family: "Licorice", cursive;
+  font-size: 1.6rem;
+  color: #5a3e5d;
+  line-height: 1.5;
+}
+/* Caballeros: imagen al lado derecho del texto */
+.dress-code-card.caballeros {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* texto a la izquierda */
+  gap: 20px;
+  max-width: 700px;
+}
+
+.dress-code-card.caballeros img {
+  width: 120px; /* ajusta según tu preferencia */
+  height: auto;
+  margin-left: auto; /* fuerza que la imagen quede a la derecha */
+}
+
+.dress-code-card.caballeros .text-content {
+  text-align: left;
+}

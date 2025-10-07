@@ -1,0 +1,240 @@
+/* =================== UBICACIÓN =================== */
+.section-title {
+  font-family: 'Cinzel', serif; /* elegante y clásico */
+  font-size: 2.5rem;
+  text-align: center;
+  background: linear-gradient(90deg, #7d3c98, #c39bd3, #d4af37); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 50px;
+  margin-bottom: 25px;
+  position: relative;
+  letter-spacing: 1px;
+  font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+}
+
+.location-blocks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.2rem;
+  margin-top: 2.5rem;
+}
+
+/* Tarjetas */
+.location-card {
+  flex: 1 1 300px;
+  max-width: 360px;
+  background: #fff;
+  padding: 2rem 1.5rem;
+  border-radius: 20px;
+  text-align: center;
+  border: 1px solid rgba(178,143,199,0.2);
+  box-shadow: 0 10px 26px rgba(90,59,115,0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.location-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(90,59,115,0.25);
+}
+
+/* Iconos */
+.location-card img {
+  width: 150px; /* 🔹 más grande */
+  margin-bottom: 1.2rem;
+  padding: 22px; /* 🔹 círculo más grande */
+  background: #d4af37; /* 🔹 fondo mostaza */
+  border-radius: 50%;
+  box-shadow: 0 6px 14px rgba(178,143,199,0.25);
+}
+
+/* Títulos */
+.location-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: #5a3b73;
+  margin-bottom: 0.6rem;
+}
+
+/* Dirección */
+.location-card .address {
+  font-family: 'Merriweather', serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #6c4970;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+
+/* Botón */
+.location-card button.btn-map {
+  padding: 0.7rem 1.3rem;
+  background: linear-gradient(135deg, #c8a2c8, #eac9f0, #d4af37);
+  color: #fff;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  font-family: 'Merriweather', serif;
+  transition: all 0.3s ease;
+}
+
+.location-card button.btn-map:hover {
+  transform: scale(1.08);
+  background: linear-gradient(135deg, #d8b5e0, #c8a2c8, #e4c67c);
+}
+
+/* =================== MODAL =================== */
+#map-modal {
+  display: none;
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;
+  background: rgba(90,59,115,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  overflow-y: auto;  /* 🔹 permite scroll interno si es necesario */
+  padding: 20px;  
+  transform: scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#map-modal.show {
+   display: flex;
+  opacity: 1;
+  transform: scale(1);
+}
+
+#map-modal .modal-content {
+  position: relative;
+  width: 92%;
+  max-width: 700px;
+  max-height: 90vh;         /* 🔹 nunca sobrepasa pantalla */
+  height: 520px;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;         /* 🔹 evita que nada sobresalga */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+
+#map-modal iframe {
+  flex: 1;
+  width: 100%;
+  border: 0;
+  min-height: 400px;
+  border: 0;
+}
+
+/* Dirección */
+#map-address {
+  padding: 12px;
+  text-align: center;
+  font-family: 'Merriweather', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4a2f4f;
+  background: #faf6fb;
+}
+
+/* Botones acción */
+.map-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 14px;
+  background: #f5f0f9;
+}
+
+.map-actions a {
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 14px;
+  font-family: 'Merriweather', serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(178,143,199,0.2);
+}
+
+.map-actions a.map-view {
+  background: linear-gradient(135deg, #c8a2c8, #eac9f0);
+  color: #fff;
+}
+.map-actions a.map-view:hover {
+  background: linear-gradient(135deg, #d8b5e0, #c8a2c8);
+}
+
+.map-actions a.map-directions {
+  background: #fff;
+  color: #5a3b73;
+  border: 1px solid rgba(178,143,199,0.3);
+}
+.map-actions a.map-directions:hover {
+  background: #f5eaf8;
+}
+
+/* Botón cerrar */
+#close-modal {
+  position: absolute;
+  top:14px; right:14px;
+  background: #b28fc7;
+  color:#fff;
+  border:none;
+  padding:0.5rem 1rem;
+  border-radius:14px;
+  cursor:pointer;
+  font-weight:600;
+  font-family: 'Merriweather', serif;
+}
+#close-modal:hover {
+  transform: scale(1.1);
+  background: #8c5fa8;
+}
+
+/* Responsive */
+@media(max-width: 600px) {
+  .location-card {
+    max-width: 100%;
+  }
+  #map-modal .modal-content {
+    width: 100%;
+    height: 90vh;
+  }
+}
+
+
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #c39bd3, #d4af37, #c39bd3);
+  margin: 14px auto 0;
+  border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(150, 100, 180, 0.3);
+}
+
+
+/* Subtítulos de ubicación */
+.location-card p strong {
+  font-family: 'Cinzel', serif;  /* elegante y clásico */
+  font-size: 0.8rem;             /* más grande */
+  color: #5a3b73;                /* púrpura elegante */
+  text-transform: uppercase;     /* opcional: todo en mayúsculas */
+  letter-spacing: 1px;
+  display: block;                /* cada subtítulo en su línea */
+  margin-bottom: 0.4rem;
+  text-shadow: 0.5px 0.5px 2px rgba(0,0,0,0.15); /* sombra sutil */
+}

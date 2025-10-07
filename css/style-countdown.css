@@ -1,0 +1,338 @@
+/* ==========================
+   SECCIÓN GENERAL - COUNTDOWN
+========================== */
+.inv-section.countdown {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f7f2fa, #e6d9f2); /* lilas suaves y elegantes */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 2rem;
+  overflow: hidden;
+  font-family: 'Playfair Display', serif;
+  color: #6e4d88;
+  z-index: 1;
+}
+
+/* 🎭 Fade elegante que conecta Countdown con Historia */
+.inv-section.countdown::after {
+  content: "";
+  position: absolute;
+  bottom: -100px; /* empuja hacia la historia */
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(
+    to bottom,
+    rgba(230, 217, 242, 1) 0%,    /* lila sólido */
+    rgba(230, 217, 242, 0.7) 40%, /* más suave */
+    rgba(230, 217, 242, 0.3) 70%, /* muy sutil */
+    rgba(230, 217, 242, 0) 100%   /* desaparece */
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ==========================
+   ARCO CONTENEDOR
+========================== */
+.countdown-arc {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  border-radius: 50% 50% 0 0;
+  overflow: hidden;
+  border: 4px solid #b49ddc;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  background: #000;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.arc-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+  filter: brightness(0.75);
+  transition: transform 15s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+.inv-section.countdown:hover .arc-img {
+  transform: scale(1.05);
+}
+
+/* Brillo sutil sobre el arco */
+.countdown-arc::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent 70%);
+  pointer-events: none;
+  z-index: 2;
+  animation: shimmer 8s infinite linear;
+}
+@keyframes shimmer {
+  0% { transform: translateX(-100%) skewX(-20deg); }
+  100% { transform: translateX(200%) skewX(-20deg); }
+}
+
+/* ==========================
+   CRONÓMETRO
+========================== */
+.timer-arc {
+  position: relative;
+  margin-top: 1rem;
+  z-index: 3;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  border-radius: 2rem;
+  padding: 1rem 1.5rem;
+  width: 90%;
+  max-width: 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  animation: floatBox 6s ease-in-out infinite alternate;
+  text-align: center;
+}
+
+@keyframes floatBox {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-5px); }
+}
+
+.time-box {
+  flex: 1;
+  min-width: 50px;
+  text-align: center;
+}
+
+#timer {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.time-box .num {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffe599; /* dorado romántico */
+  text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  display: block;
+}
+
+.time-box .label {
+  font-size: 0.7rem;
+  color: #f0e6ff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* ==========================
+   VERSO
+========================== */
+.countdown-content {
+  text-align: center;
+  margin-top: 1.7rem;
+  max-width: 400px;
+  z-index: 3;
+}
+
+.countdown-content h2 {
+  font-size: 2.5rem;
+  font-family: 'Tangerine', cursive;
+  color: #6e4d88;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+/* ==========================
+   CORAZÓN ANIMADO
+========================== */
+.heart {
+  font-size: 2rem;
+  color: #d8b4f7;
+  margin-top: 0.5rem;
+  animation: beat 1.2s infinite;
+}
+
+@keyframes beat {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.25); }
+}
+
+/* ==========================
+   CORAZONES FLOTANTES
+========================== */
+.floating-heart {
+  position: absolute;
+  font-size: 1.5rem;
+  color: #d8b4f7;
+  opacity: 0.5;
+  animation: floatHeart 6s infinite ease-in-out;
+}
+
+@keyframes floatHeart {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 0.5; }
+  50%  { transform: translateY(-20px) rotate(15deg); opacity: 0.8; }
+  100% { transform: translateY(0) rotate(-15deg); opacity: 0.5; }
+}
+
+/* ==========================
+   POLVO DE ESTRELLAS
+========================== */
+.star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff0ff 0%, #d9bfff 70%, transparent 100%);
+  opacity: 0;
+  animation: twinkle 5s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: translate(0,0) scale(1); }
+  50%      { opacity: 0.5; transform: translate(var(--x,0px), var(--y,0px)) scale(1.1); }
+}
+
+/* ==========================
+   SECCIÓN HISTORIA
+========================== */
+.inv-section.history {
+  position: relative;
+  background: url('tu-fondo.jpg') no-repeat center/cover;
+  z-index: 0;
+}
+
+.inv-section.history h2 {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  color: #fff;
+  margin-bottom: 4rem;
+  text-shadow: 3px 3px 12px rgba(0,0,0,0.8);
+}
+
+
+
+
+/* ==========================
+   CALENDARIO ROMÁNTICO
+========================== */
+.calendar {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  text-align: center;
+  width: 320px;
+  position: relative;
+}
+
+/* Corazón arriba */
+.calendar::before {
+  content: "♥";
+  font-size: 2.5rem;
+  color: #c94f7c;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 0.5rem 1rem;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ✨ SE ACERCA */
+.calendar-title {
+  font-size: 1.6rem;
+  font-family: 'Tangerine', cursive;
+  color: #c94f7c;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  animation: fadeInUp 2s ease both;
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.month {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #6a2c70;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.6rem;
+  font-size: 0.9rem;
+}
+
+.day-name {
+  font-weight: bold;
+  color: #a27ea8;
+}
+
+.day {
+  padding: 0.6rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.day:hover {
+  background: #f8e6f0;
+  cursor: pointer;
+}
+
+.highlight {
+  background: #c94f7c;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+}
+
+/* Día especial (23) que palpita */
+.special-day {
+  background: #e63963;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 50%;
+  animation: heartbeat 2.8s infinite;
+  box-shadow: 0 0 15px rgba(230, 57, 99, 0.6);
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(230, 57, 99, 0.6);
+  }
+  30% {
+    transform: scale(1.25);
+    box-shadow: 0 0 25px rgba(230, 57, 99, 0.8);
+  }
+  60% {
+    transform: scale(1.1);
+    box-shadow: 0 0 18px rgba(230, 57, 99, 0.7);
+  }
+}

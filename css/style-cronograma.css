@@ -1,0 +1,301 @@
+/* ===================== CRONOGRAMA BODA ELEGANTE ===================== */
+#wedding-schedule {
+  position: relative;
+  background: linear-gradient(180deg, #f4eefc, #e6d9f7, #cdb4db, #9d7bbd);
+  padding-top:120px;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  color: #fff;
+  padding: 40px 20px;
+  z-index: 1;
+}
+
+
+/* ===================== TÍTULO PRINCIPAL ===================== */
+#wedding-schedule .section-title {
+  font-size: 3rem;
+  margin-bottom: 7rem;
+  margin-top: 60px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 0 0 18px rgba(157, 123, 189, 0.6);
+}
+
+/* ===================== TIMELINE GENERAL ===================== */
+#wedding-schedule .timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Animación de entrada suave */
+#wedding-schedule .timeline-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards;
+}
+
+/* Alternancia izquierda / derecha */
+#wedding-schedule .timeline-item.left {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+#wedding-schedule .timeline-item.right {
+  flex-direction: row;
+  text-align: left;
+}
+
+#wedding-schedule .timeline-item.left,
+#wedding-schedule .timeline-item.right {
+  margin-top: -0.5rem;
+}
+
+/* ===================== MARCADORES ===================== */
+#wedding-schedule .timeline-item .marker {
+  width: 80px;
+  height: 80px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #cfa17e; /* dorado rosado */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s, background 0.3s;
+}
+
+#wedding-schedule .timeline-item .marker img {
+  width: 50px;
+  height: 50px;
+}
+
+#wedding-schedule .timeline-item .marker:hover {
+  transform: scale(1.2);
+  background: #cfa17e;
+  border-color: #fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* ===================== DETALLES DE EVENTOS ===================== */
+#wedding-schedule .timeline-item .content {
+  padding: 1.8rem 2rem;
+  background: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(246,240,252,0.8));
+  border: 1px solid rgba(207, 161, 126, 0.3);
+  border-radius: 22px;
+  box-shadow: 0 12px 28px rgba(157, 123, 189, 0.25);
+  backdrop-filter: blur(12px);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+#wedding-schedule .timeline-item:hover .content {
+  transform: translateY(-6px) scale(1.02);
+  background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(246,240,252,0.9));
+  box-shadow: 0 15px 35px rgba(157, 123, 189, 0.35);
+}
+/* ===================== TÍTULOS Y HORAS ===================== */
+#wedding-schedule .timeline-item .content h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-size: 2rem;
+  background: linear-gradient(90deg, #cfa17e, #9d7bbd, #cdb4db);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.4rem;
+  letter-spacing: 1px;
+}
+
+#wedding-schedule .timeline-item .content h4 {
+  font-family: 'Merriweather', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #5a2a42; /* burdeos elegante */
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.5px;
+}
+
+
+#wedding-schedule .timeline-item:hover .content p {
+  color: #5a3b73; /* realce sutil al pasar el mouse */
+}
+/* ===================== DESCRIPCIÓN ===================== */
+#wedding-schedule .timeline-item .content p {
+  font-family: 'Merriweather', serif;
+  font-size: 1.05rem;
+  color: #3a2d4f; /* gris malva oscuro */
+  line-height: 1.7;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+#wedding-schedule .timeline-item:hover .content {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(100, 80, 140, 0.25);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media screen and (max-width: 768px) {
+  #wedding-schedule .timeline-item {
+    flex-direction: row !important;
+    text-align: left !important;
+  }
+  #wedding-schedule .line-dashed {
+    display: none;
+  }
+}
+
+/* ===================== ELIMINAR LÍNEA CENTRAL ===================== */
+#wedding-schedule .timeline::before,
+#wedding-schedule .timeline::after {
+  content: none;
+}
+
+/* ===================== LIRIOS Y DECORACIÓN ===================== */
+.flowers-divider {
+  position: absolute;
+  top: -90px;
+  left: -30px;
+  width: 250px;
+  z-index: 5;
+  transform: rotate(-5deg);
+}
+
+.flowers-divider img {
+  width: 100%;
+  height: auto;
+  opacity: 0.95;
+  display: block;
+}
+
+.flowers-divider1 {
+  position: absolute;
+  top: -90px;
+  right: -30px;
+  width: 250px;
+  z-index: 5;
+  transform: scaleX(-1) rotate(-5deg);
+}
+
+.flowers-divider1 img {
+  width: 100%;
+  height: auto;
+  opacity: 0.95;
+  display: block;
+}
+
+.flowers-divider2 {
+  position: absolute;
+  top: -90px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  z-index: 4;
+}
+
+.flowers-divider2 img {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 1;
+}
+
+/* ===================== PÉTALOS ===================== */
+#petals-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 3;
+}
+
+#petals-container .petal {
+  position: absolute;
+  top: -60px;
+  width: 25px;
+  height: 35px;
+  background: radial-gradient(circle at 40% 30%, rgba(255,192,203,0.9), rgba(255,105,180,0.6));
+  border-radius: 50% 50% 40% 40% / 70% 70% 30% 30%;
+  pointer-events: none;
+  transform-origin: center top;
+  animation: fall 12s linear infinite;
+  opacity: 0.85;
+}
+
+/* Animación pétalos */
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg) translateX(0) scale(1);
+    opacity: 0.9;
+  }
+  25% {
+    transform: translateY(180px) rotate(10deg) translateX(4px) scale(0.95);
+  }
+  50% {
+    transform: translateY(360px) rotate(20deg) translateX(-6px) scale(1.05);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(540px) rotate(30deg) translateX(3px) scale(0.95);
+  }
+  100% {
+    transform: translateY(720px) rotate(40deg) translateX(-2px) scale(1);
+    opacity: 0.3;
+  }
+}
+
+/* ===================== ÚLTIMO DETALLE ===================== */
+#wedding-schedule .timeline-item:last-child {
+  transform: translateY(-4px);
+}
+#wedding-schedule .timeline-item + .timeline-item {
+  margin-top: 7px;
+}
+
+/* Aparición secuencial */
+#wedding-schedule .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+#wedding-schedule .timeline-item:nth-child(2) { animation-delay: 0.3s; }
+#wedding-schedule .timeline-item:nth-child(3) { animation-delay: 0.5s; }
+#wedding-schedule .timeline-item:nth-child(4) { animation-delay: 0.7s; }
+#wedding-schedule .timeline-item:nth-child(5) { animation-delay: 0.9s; }
+#wedding-schedule .timeline-item:nth-child(6) { animation-delay: 1.1s; }
+
+/* Animación fadeInUp */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+#wedding-schedule .timeline-item .content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 1px;
+  background: linear-gradient(135deg, #c7b8e5, #e6dafc);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+#wedding-schedule .timeline-item {
+  opacity: 0;
+  transform: translateY(25px);
+  animation: fadeUp 0.9s forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
