@@ -37,7 +37,7 @@
   opacity: 0.7; /* Más visible pero aún elegante */
   transform: scale(1.02); /* Zoom muy ligero */
   filter: brightness(0.6); /* Mantiene el fondo oscuro pero visible */
-  background-image: url('../img/2024.jpg'); /* Cambia según tu ruta */
+  background-image: url('https://res.cloudinary.com/di1ldo0im/image/upload/v1759880797/2024_eeu5rq.jpg'); /* Cambia según tu ruta */
   animation: zoomSuave 20s ease-in-out infinite alternate; /* Zoom lento y suave */
 }
 
