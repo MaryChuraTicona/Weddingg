@@ -142,3 +142,71 @@
   margin-bottom: 1rem;  /* reduce el espacio inferior */
   transform: translateY(-40px); /* sube el evento ligeramente */
 }
+
+
+/* =============================
+   OPTIMIZACIÓN HISTORIA / TIMELINE
+============================= */
+
+/* Acelera las animaciones en GPU */
+.timeline-item,
+.timeline-left img,
+.timeline-right img {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Suaviza entrada */
+.timeline-item {
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+/* Imágenes: animaciones más livianas */
+.timeline-left img,
+.timeline-right img {
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  backface-visibility: hidden;
+}
+
+/* Hover más fluido sin recalcular layout */
+.timeline-left img:hover,
+.timeline-right img:hover {
+  transform: scale(1.08); /* más suave que 1.15 */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+}
+
+/* Reduce carga visual de sombras en móviles */
+@media (max-width: 768px) {
+  .inv-section.history {
+    background: 
+      linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 100%),
+      url('https://res.cloudinary.com/di1ldo0im/image/upload/v1759880831/pareja8_eco4pm.jpg') no-repeat center center/cover;
+    background-attachment: scroll; /* evita re-render pesado */
+  }
+
+  .timeline-left img,
+  .timeline-right img {
+    width: 130px;
+    height: 130px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  }
+
+  .timeline-left p,
+  .timeline-right p {
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+  }
+
+  .timeline::before {
+    opacity: 0.6;
+  }
+}
+
+/* Entrada diferida para no cargar todo a la vez */
+@media (prefers-reduced-motion: no-preference) {
+  .timeline-item:nth-child(2n) {
+    transition-delay: 0.1s;
+  }
+  .timeline-item:nth-child(3n) {
+    transition-delay: 0.2s;
+  }
+}

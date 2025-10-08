@@ -238,3 +238,56 @@
   margin-bottom: 0.4rem;
   text-shadow: 0.5px 0.5px 2px rgba(0,0,0,0.15); /* sombra sutil */
 }
+
+
+
+
+/* =============================
+   OPTIMIZACIÓN MODAL UBICACIÓN
+============================= */
+
+#map-modal {
+  will-change: opacity, transform;
+  transform: translateZ(0);
+}
+
+/* Versión más ligera del blur */
+@media (max-width: 768px) {
+  #map-modal {
+    backdrop-filter: none;                /* elimina blur en móviles */
+    background: rgba(90,59,115,0.75);    /* compensa con opacidad */
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  #map-modal .modal-content {
+    max-width: 95%;
+    max-height: 85vh;
+    border-radius: 16px;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.2);
+    transform: translateY(5px);
+    transition: transform 0.25s ease;
+  }
+
+  #map-modal.show .modal-content {
+    transform: translateY(0);
+  }
+
+  /* optimiza el iframe */
+  #map-modal iframe {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  #map-modal.show iframe {
+    opacity: 1;
+  }
+
+  /* botones más suaves */
+  .map-actions a {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .map-actions a:hover {
+    transform: translateY(-3px);
+  }
+}
+

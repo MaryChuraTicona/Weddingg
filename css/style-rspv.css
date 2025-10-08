@@ -155,3 +155,49 @@
   50% { transform: scale(1.02); }
   100% { transform: scale(1); }
 }
+
+
+
+/* =============================
+   OPTIMIZACIÓN MÓVIL CONFIRMAR ASISTENCIA
+============================= */
+
+.confirm-section {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Optimiza el fondo y animación */
+@media (max-width: 768px) {
+  .confirm-section {
+    padding: 30px 20px;
+    box-shadow: none;
+  }
+
+  .confirm-section::before {
+    filter: brightness(0.7); /* elimina blur costoso */
+    animation: zoomSuaveMobile 25s ease-in-out infinite alternate;
+    transition: opacity 1s ease; /* menos carga */
+  }
+
+  @keyframes zoomSuaveMobile {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.015); } /* zoom mínimo */
+  }
+
+  .zoom-message h1 {
+    font-size: 1.8em;
+    animation: none; /* desactiva floatUp continuo */
+  }
+
+  .zoom-message p {
+    font-size: 1em;
+  }
+
+  /* Botones más ligeros visualmente */
+  .btn-asistira, #confirmar {
+    padding: 12px 20px;
+    border-radius: 30px;
+    transition: background 0.2s ease;
+  }
+}

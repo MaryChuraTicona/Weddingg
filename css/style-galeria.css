@@ -76,3 +76,55 @@
 
 .prev { left: 14px; }
 .next { right: 14px; }
+
+
+
+/* =============================
+   OPTIMIZACIÓN CARRUSEL
+============================= */
+
+/* Activa aceleración GPU */
+.carousel-track,
+.carousel-slide img {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Transiciones más suaves y ligeras */
+.carousel-track {
+  transition: transform 0.45s ease-out;
+}
+
+.carousel-slide img {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  backface-visibility: hidden;
+}
+
+/* Hover más liviano (sin rotación) */
+.carousel-slide img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+}
+
+/* Reduce carga visual en móviles */
+@media (max-width: 768px) {
+  .carousel-slide img {
+    height: 300px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  .carousel-btn {
+    padding: 10px 12px;
+    font-size: 24px;
+  }
+
+  .carousel-btn:hover {
+    transform: scale(1.08);
+  }
+}
+
+/* Transiciones con menor repintado */
+.carousel-btn {
+  will-change: transform;
+  transform: translateZ(0);
+}

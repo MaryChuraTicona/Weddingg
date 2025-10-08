@@ -269,3 +269,25 @@ body::-webkit-scrollbar {
   will-change: transform, opacity;
 }
 
+
+
+.firefly, .p, .petal {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.fade-out {
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: scale(1.05);
+  opacity: 0;
+}
+
+.flash-elegant.active {
+  animation: flashFade 1s ease forwards;
+}
+
+@keyframes flashFade {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
