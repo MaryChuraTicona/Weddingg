@@ -219,3 +219,53 @@ body::-webkit-scrollbar {
   opacity: 1;
   transform: translateY(0);
 }
+
+
+
+/* ===================== OPTIMIZACIÓN MÓVIL ==================== */
+@media (max-width: 768px) {
+
+  /* Desactiva blur y reduce escala */
+  .bg-initial .bg-img {
+    filter: brightness(0.95); /* quita el blur pesado */
+    animation: none; /* detén el ken burns */
+  }
+
+  /* Reduce cantidad de partículas o su tamaño */
+  .p {
+    width: 6px;
+    height: 6px;
+    opacity: 0.5;
+    filter: blur(0.5px);
+  }
+
+  /* Acelera las transiciones */
+  .scene,
+  .envelope,
+  .envelope-flap,
+  .envelope-body,
+  .seal {
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+
+  /* Desactiva sombras costosas */
+  .envelope-body,
+  .envelope-flap {
+    box-shadow: none;
+  }
+
+  /* Reduce duración de fade-ins */
+  .fade-out, .fade-out-up, .fade-out-scale {
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+}
+
+
+.bg-img,
+.scene,
+.envelope,
+.seal,
+.invitation section {
+  will-change: transform, opacity;
+}
+

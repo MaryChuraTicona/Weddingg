@@ -203,3 +203,45 @@
     gap: 0.3rem;
   }
 }
+
+/* =============================
+   OPTIMIZACIÓN MÓVIL Y RENDIMIENTO
+============================= */
+
+/* Prepara GPU para animaciones */
+.inv-hero .hero-bg,
+.hero-box {
+  will-change: transform, opacity;
+}
+
+/* Reduce filtros y animaciones en móviles */
+@media (max-width: 768px) {
+  .inv-hero .hero-bg {
+    /* quita blur costoso y reduce zoom */
+    filter: brightness(0.65);
+    animation: heroZoomMobile 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes heroZoomMobile {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); } /* menos esfuerzo */
+  }
+
+  .hero-box {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: none; /* desactiva blur pesado */
+    border: 1px solid rgba(255,255,255,0.5);
+    box-shadow: none;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+  }
+
+  /* Ajusta tipografía y spacing para fluidez */
+  .hero-names {
+    font-size: clamp(3rem, 8vw, 3.5rem);
+  }
+
+  .group-date {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
