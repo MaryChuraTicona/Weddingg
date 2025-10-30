@@ -141,38 +141,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-
-
-
-// Generar pétalos dinámicamente
-const petalsContainer = document.getElementById('petals-container');
-const totalPetals = 4; // más pétalos para realismo
-
-for (let i = 0; i < totalPetals; i++) {
-  const petal = document.createElement('div');
-  petal.classList.add('petal');
-
-  // posición horizontal aleatoria
-  petal.style.left = Math.random() * 100 + '%';
-
-  // duración más lenta y aleatoria
-  const duration = 12 + Math.random() * 6; // 12 a 18s
-  const delay = Math.random() * 8; // retraso aleatorio
-  petal.style.animationDuration = duration + 's';
-  petal.style.animationDelay = delay + 's';
-
-  // tamaño aleatorio
-  const scale = 0.8 + Math.random() * 0.5; // 0.8 a 1.3
-  petal.style.transform = `scale(${scale})`;
-
-  petalsContainer.appendChild(petal);
-}
-
-
-
-
-
 // ===================== CARGAR DATOS DEL INVITADO DESDE GOOGLE APPS SCRIPT =====================
 async function cargarInvitado() {
   // Tomar el código de la URL (ejemplo: ?codigo=A001)
