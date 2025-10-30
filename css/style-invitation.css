@@ -1,4 +1,5 @@
 /* =============================
+<<<<<<< HEAD
    HERO GENERAL
 ============================= */
 .inv-hero {
@@ -244,4 +245,143 @@
     flex-direction: column;
     gap: 0.5rem;
   }
+
+.inv-hero::before{
+  content:"";
+  position:absolute; inset:.5rem;
+  border:1px solid rgba(255,255,255,.75);
+  border-radius:28px; pointer-events:none; z-index:1;
 }
+
+/* fondo nítido con zoom */
+.inv-hero .hero-bg{
+  position:absolute; inset:0;
+  background:url('https://res.cloudinary.com/di1ldo0im/image/upload/v1759880799/pareja_b3nec9.jpg') center/cover no-repeat;
+  filter:brightness(.58);
+  transform:scale(1.06);
+  animation:heroZoomSoft 24s ease-in-out infinite alternate;
+  z-index:-3; will-change:transform;
+}
+@keyframes heroZoomSoft{
+  from{ transform:scale(1.06); }
+  to  { transform:scale(1.14); }
+}
+.inv-hero .hero-overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(to bottom, rgba(0,0,0,.18), rgba(0,0,0,.42));
+  z-index:-2;
+}
+
+/* tarjeta de vidrio */
+.hero-box{
+  position:relative; z-index:2;
+  width:min(88%,640px); max-width:640px;
+  min-height:86vh; padding:2rem 1.6rem;
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(10px) saturate(120%);
+  -webkit-backdrop-filter:blur(10px) saturate(120%);
+  border:1px solid rgba(255,255,255,.55);
+  border-radius:26px;
+  box-shadow:0 20px 60px rgba(0,0,0,.28), inset 0 0 0 1px rgba(255,255,255,.22);
+  text-align:center; animation:heroIn .9s ease-out both;
+}
+@keyframes heroIn{ from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+.hero-box::before{
+  content:""; position:absolute; inset:14px;
+  border:1px solid rgba(255,255,255,.35); border-radius:18px; pointer-events:none;
+}
+.hero-box::after{
+  content:""; position:absolute; inset:0; border-radius:inherit;
+  background:radial-gradient(120% 60% at 50% -10%, rgba(255,255,255,.22), transparent 40%);
+  mix-blend-mode:screen; opacity:.9; pointer-events:none;
+}
+
+/* títulos */
+.hero-title{
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(1.8rem,3vw,2.2rem);
+  text-shadow:0 1px 4px rgba(0,0,0,.35);
+  margin-bottom:.4rem;
+}
+.hero-names{
+  font-size:clamp(3.6rem,7vw,4.6rem);
+  font-weight:700; line-height:1.05; margin-bottom:.6rem;
+  text-shadow:0 2px 8px rgba(0,0,0,.35); position:relative; padding-bottom:.9rem;
+}
+.hero-names::after{
+  content:""; display:block; width:86%; height:1px; margin:.6rem auto 0;
+  background:linear-gradient(to right, transparent, rgba(255,255,255,.7), transparent);
+  border-radius:2px;
+}
+
+/* ===== Fecha con líneas y cajas ===== */
+.group-date{
+  position:relative;
+  display:grid; grid-template-columns:1fr auto 1fr;
+  align-items:center; gap:1rem;
+  margin:1.4rem auto .6rem; padding:14px 0;
+  max-width:520px;            /* ancho de toda la franja */
+}
+/* líneas superior e inferior */
+.group-date::before,
+.group-date::after{
+  content:""; position:absolute; left:4%; right:4%; height:1px;
+  background:linear-gradient(to right, transparent, rgba(255,255,255,.7), transparent);
+  border-radius:2px;
+}
+.group-date::before{ top:0; }
+.group-date::after{ bottom:0; }
+
+/* “DOMINGO” (izq) y “2:00 PM” (der) en cajitas */
+.day_name, .banner_time{
+  justify-self:start; /* para el izq por defecto */
+  display:inline-block; padding:.45rem .9rem;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(.95rem,2vw,1.05rem);
+  letter-spacing:.06em; text-transform:uppercase;
+  background:rgba(0,0,0,.18);
+  border:1px solid rgba(255,255,255,.75);
+  border-radius:6px;
+}
+.banner_time{ justify-self:end; }
+
+/* número grande al centro */
+.banner_date{
+  text-align:center;
+  font-family:"Times New Roman", Times, serif;
+  font-size:clamp(3.8rem,8vw,5.2rem);
+  font-weight:700; line-height:1;
+  display:flex; flex-direction:column; align-items:center;
+}
+.date-sub{
+  margin-top:.45rem;
+  font-size:clamp(.95rem,1.5vw,1.05rem);
+  letter-spacing:.18em; opacity:.92;
+}
+
+/* cita/versículo */
+.group-add{ margin-top:1.2rem; font-family:"Bodoni Moda",serif; }
+.group-add p{ font-size:1.1rem; margin-bottom:.3rem; }
+.banner_location{ font-size:1rem; display:block; margin-bottom:.5rem; }
+.group-add::after{
+  content:""; display:block; width:80%; height:1px; margin:.8rem auto 0;
+  background:rgba(255,255,255,.6); border-radius:2px;
+}
+
+/* ======= Responsive ======= */
+@media (max-width:768px){
+  .inv-hero{ padding:.7rem; }
+  .inv-hero::before{ inset:.45rem; border-radius:24px; }
+  .inv-hero .hero-bg{
+    filter:brightness(.62);
+    transform:scale(1.04);
+    animation:heroZoomSoftMob 16s ease-in-out infinite alternate;
+  }
+  @keyframes heroZoomSoftMob{ from{transform:scale(1.04)} to{transform:scale(1.08)} }
+
+  .hero-box{ width:min(92%,520px); min-height:auto; padding:1.4rem 1rem; border-radius:22px; }
+  .hero-box::before{ inset:10px; border-radius:16px; }
+
+  /* en móvil mantenemos la misma composición, solo tipografía menor */
+  .banner_date{ font-size:clamp(3.4rem,9vw,4rem); }
+  }}
