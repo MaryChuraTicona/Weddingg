@@ -9,7 +9,7 @@
 
 .inv-hero {
   position: relative;
- min-height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,21 +20,13 @@
 }
 
 /* Fondo animado */
-.inv-hero::before {
-  content: "";
-  position: absolute;
-   inset: clamp(0.75rem, 3vw, 2.5rem);
-  border-radius: clamp(1.6rem, 4vw, 2.8rem);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  pointer-events: none;
-  z-index: 1;
-}
+
 
 .inv-hero .hero-bg {
   position: absolute;
   inset: 0;
-  background: url("https://res.cloudinary.com/di1ldo0im/image/upload/v1759880799/pareja_b3nec9.jpg") center / cover no-repeat;
-   filter: brightness(0.72) saturate(1.08);
+  background: url("https://res.cloudinary.com/di1ldo0im/image/upload/v1762096220/_REN6291_fdzqc2.jpg") center / cover no-repeat;
+  filter: brightness(0.72) saturate(1.08);
   transform: scale(1.04);
   animation: heroZoom 30s ease-in-out infinite alternate;
   z-index: -3;
@@ -66,31 +58,23 @@
   }
 }
 
-.hero-box {
+.hero-card {
   position: relative;
-   z-index: 2;
+  z-index: 2;
   width: min(680px, 100%);
   display: grid;
   gap: clamp(1.6rem, 4vw, 2.4rem);
   padding: clamp(2.4rem, 5vw, 3.6rem) clamp(1.6rem, 4vw, 3rem);
   text-align: center;
-   background: rgba(18, 22, 36, 0.24);
-  backdrop-filter: blur(16px) saturate(120%);
-  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  background: rgba(18, 22, 36, 0.32);
+  backdrop-filter: blur(18px) saturate(120%);
+  -webkit-backdrop-filter: blur(18px) saturate(120%);
   border-radius: clamp(1.8rem, 4vw, 2.8rem);
- border: 1px solid rgba(255, 255, 255, 0.22);
+ border: 1px solid rgba(255, 255, 255, 0.26);
   box-shadow: 0 24px 50px rgba(12, 18, 34, 0.38);
 }
 
-.hero-box::before {
-  content: "";
-  position: absolute;
-  inset: 12px;
-  border-radius: inherit;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  pointer-events: none;
-  opacity: 0.5;
-}
+
 
 .hero-eyebrow {
   font-family: "Great Vibes", cursive;
@@ -107,9 +91,8 @@
   display: inline-flex;
   gap: 0.65rem;
   justify-content: center;
-
   align-items: center;
- text-transform: uppercase;
+  text-transform: uppercase;
   letter-spacing: 0.14em;
   text-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
 }
@@ -121,61 +104,46 @@
   letter-spacing: 0.3em;
 }
 
-.hero-date-card {
+.hero-intro {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(1rem, 2.8vw, 1.2rem);
+  line-height: 1.7;
+  color: var(--hero-accent);
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+.hero-details {
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
- gap: clamp(1rem, 4vw, 2rem);
-  padding: clamp(1.2rem, 3vw, 1.8rem);
-  border-radius: clamp(1rem, 3vw, 1.6rem);
-  background: rgba(21, 25, 37, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  gap: clamp(1rem, 3vw, 1.6rem);
+  padding: clamp(0.6rem, 2vw, 1rem) 0;
+  text-align: left;
 }
-
-.hero-day,
-.hero-time {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem 1.2rem;
-  border-radius: 999px;
-  font-family: "Poppins", sans-serif;
-  font-size: clamp(0.95rem, 2.6vw, 1.1rem);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-   background: rgba(255, 255, 255, 0.22);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  text-shadow: 0 8px 22px rgba(0, 0, 0, 0.4);
-}
-
-.hero-date-number {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  
+.hero-detail {
+  display: grid;
   gap: 0.4rem;
+  padding: 0 clamp(0.2rem, 1vw, 0.6rem);
+}
+.hero-detail:not(:last-child) {
+  padding-bottom: clamp(0.6rem, 2vw, 1rem);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.hero-number {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(3.6rem, 12vw, 6rem);
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
-}
-.hero-date-details {
-  display: flex;
-  gap: 0.6rem;
+.hero-detail-label {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(0.95rem, 2.4vw, 1.1rem);
-  letter-spacing: 0.16em;
+   font-size: 0.8rem;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  opacity: 0.85;
-  text-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+  color: rgba(255, 255, 255, 0.78);
 }
 
-.hero-venue {
+.hero-detail-value {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  line-height: 1.5;
+  text-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+.hero-verse {
   display: grid;
   gap: 0.4rem;
 
@@ -209,33 +177,24 @@
     padding: clamp(3rem, 6vw, 4rem) clamp(1rem, 4vw, 2rem);
   }
 
-  .inv-hero::before {
-    inset: clamp(0.5rem, 3vw, 1.5rem);
-  }
+ 
 }
 
 @media (max-width: 768px) {
-.inv-hero {
+  .inv-hero {
     min-height: 90vh;
   }
 
-  .hero-box {
-      backdrop-filter: blur(12px) saturate(115%);
-    -webkit-backdrop-filter: blur(12px) saturate(115%);
-    padding: clamp(2rem, 5vw, 2.6rem) clamp(1.2rem, 4vw, 2rem);
+ .hero-card {
+    backdrop-filter: blur(14px) saturate(120%);
+    -webkit-backdrop-filter: blur(14px) saturate(120%);
+    padding: clamp(2rem, 5vw, 2.8rem) clamp(1.2rem, 4vw, 2.2rem);
     gap: 1.6rem;
   }
 
   /* Ajusta tipografía y spacing para fluidez */
- .hero-date-card {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    gap: 1rem;
-  }
-
-   .hero-day,
-  .hero-time {
-    width: 100%;
+ .hero-details {
+    padding: clamp(0.4rem, 2vw, 0.8rem) 0;
   }
 
 }
@@ -245,14 +204,10 @@
     padding: 2.5rem 1rem;
   }
 
-.hero-box::before {
-    inset: 8px;
-  }
-   .hero-names {
+.hero-names {
     letter-spacing: 0.08em;
   }
-  .hero-date-details {
-    flex-direction: column;
-    gap: 0.3rem;
+  .hero-details {
+    gap: 1.2rem;
   }
 }
